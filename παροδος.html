@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <meta name="robots" content="noindex, nofollow">
+        <meta name="googlebot" content="noindex, nofollow">
+    </head>
+    <body>
+        <label for="user">User</label>
+        <input id="user"></input>
+        <label for="pass">Pass</label>
+        <input type="password" id="pass"></input>
+        <button id="submit" type="submit">login</button>
+    </body>
+    <script type="text/javascript">
+        var $user = document.getElementById("user");
+        var $pass = document.getElementById("pass");
+        var $submit = document.getElementById("submit");
+        $submit.style.position = "absolute";
+        $submit.style.top = "8px";
+        $submit.style.left = "434px";
+
+        $user.addEventListener("keyup", function(e){
+            if (e.target.value.toLowerCase() == "clevergirl") {
+               $pass.value = "123456";
+            }
+        });
+
+        $submit.addEventListener("mouseenter", function(e){
+            if ($user.value == "clevergirl" && $pass.value == "123456") {
+                e.target.style.position = "absolute";
+                var dx = 0;
+                var dy = 0;
+                if (e.movementX > 0) {
+                    dx = 40;
+                } else {
+                    dx = -40;
+                }
+                if (e.movementY > 0) {
+                    dy = 30;
+                } else {
+                    dy = -30;
+                }
+                e.target.style.left = Math.max(0,(parseInt(e.target.style.left) + dx)) + "px";
+
+                e.target.style.top = Math.max(0, (parseInt(e.target.style.top) + dy)) + "px";
+            } 
+        });
+
+        $submit.addEventListener("focus", function(e){
+            if (e.target.style.top == "0px" && e.target.style.left == "0px") return;
+            if ($user.value == "clevergirl" && $pass.value == "123456") {
+                $submit.setAttribute("disabled", "true");
+                setTimeout(function(){
+                    $pass.focus();
+                    $submit.removeAttribute("disabled");
+                }, 200);
+            }
+        });
+
+        $submit.addEventListener("click", function(e){
+            if (e.target.style.top == "0px" && e.target.style.left == "0px") {
+                window.location.href = "./αγορα.html"
+            }
+        })
+    </script>
+</html>
