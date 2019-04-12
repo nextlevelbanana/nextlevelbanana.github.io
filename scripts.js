@@ -13,7 +13,7 @@ document.addEventListener("keyup", event => {
     console.log(event.keyCode, event.key);
     input += event.keyCode;
     clearTimeout(timer);
-    timer = setTimeout(function() { input = ""; }, 6000);
+    timer = setTimeout(function() { input = ""; }, 2000);
     check_input();
 });
 
