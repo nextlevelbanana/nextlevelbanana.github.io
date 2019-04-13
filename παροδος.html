@@ -1,9 +1,30 @@
 <html>
     <head>
+        <!-- Google Analytics help me make better puzzles -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138207539-1"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-138207539-1');
+        </script>
+        <script src="./analytics.js"></script>
+        <!-- Google Tag Manager -->
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-KM66SCT');</script>
+        <!-- End Google Tag Manager -->
         <meta name="robots" content="noindex, nofollow">
         <meta name="googlebot" content="noindex, nofollow">
     </head>
     <body>
+        <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM66SCT"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
         <label for="user">User</label>
         <input id="user"></input>
         <label for="pass">Pass</label>
@@ -14,18 +35,30 @@
         var $user = document.getElementById("user");
         var $pass = document.getElementById("pass");
         var $submit = document.getElementById("submit");
+        var key = atob("Y2xldmVyZ2lybA==");
+        var buttonChases = 0;
+        var buttonTabs = 0;
         $submit.style.position = "absolute";
         $submit.style.top = "8px";
         $submit.style.left = "434px";
 
         $user.addEventListener("keyup", function(e){
-            if (e.target.value.toLowerCase() == "clevergirl") {
+            if (e.target.value.toLowerCase() == key) {
+                dataLayer.push({'event': 'cleverGirl'});
                $pass.value = "123456";
             }
         });
 
+        $user.addEventListener("blur", function(e){
+            if (e.target.value.toLowerCase() != key.slice(0,e.target.value.length)) {
+                dataLayer.push({'event': 'badUsername', 'userName': e.target.value});
+            }
+        });
+
         $submit.addEventListener("mouseenter", function(e){
-            if ($user.value == "clevergirl" && $pass.value == "123456") {
+            buttonChases++;
+            if ($user.value == key && $pass.value == "123456") {
+                dataLayer.push({'event': 'buttonChase','buttonChases': buttonChases});
                 e.target.style.position = "absolute";
                 var dx = 0;
                 var dy = 0;
@@ -47,16 +80,19 @@
 
         $submit.addEventListener("focus", function(e){
             if (e.target.style.top == "0px" && e.target.style.left == "0px") return;
-            if ($user.value == "clevergirl" && $pass.value == "123456") {
+            if ($user.value == key && $pass.value == "123456") {
+                buttonTabs++;
                 $submit.setAttribute("disabled", "true");
                 setTimeout(function(){
                     $pass.focus();
                     $submit.removeAttribute("disabled");
+                    dataLayer.push({'event': 'buttonTab', 'buttonTabs': buttonTabs})
                 }, 200);
             }
         });
 
         $submit.addEventListener("click", function(e){
+            dataLayer.push({'event': 'paradosSubmit'});
             if (e.target.style.top == "0px" && e.target.style.left == "0px") {
                 window.location.href = "./αγορα.html"
             }
