@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <!-- Google Analytics help me make better puzzles -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138207539-1"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-138207539-1');
+        </script>
+        <script src="./analytics.js"></script>
+        <meta name="robots" content="noindex, nofollow">
+        <meta name="googlebot" content="noindex, nofollow">
+        <link href="https://fonts.googleapis.com/css?family=Fascinate+Inline|Raleway|Sigmar+One" rel="stylesheet"> 
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM66SCT"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+        <div class="content">
+            <h1 class="wavy">You got a merit badge!!</h1>
+        </div>
+
+        <script type="text/javascript">
+         var txt = document.getElementsByClassName("wavy")[0].innerHTML;
+         var newTxt = "";
+         for (var i=0; i < txt.length; i++) {
+             newTxt += "<span class='wavy wave-"+i+"'>"+(txt[i] == " " ? "&nbsp;" : txt[i]) +"</span>";
+             console.log(".wave-"+i+"{ animation-delay: "+ Math.sin(i/22) + "s;}");
+         }
+         document.getElementsByClassName("wavy")[0].innerHTML = newTxt;
+        </script>
+    </body>
+    </html>

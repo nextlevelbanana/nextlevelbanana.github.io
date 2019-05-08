@@ -103,3 +103,42 @@ input {
 section:last-child {
     padding-bottom: 2rem;
 }
+
+
+
+
+
+.wavy *{
+  display: inline-block;
+  animation-duration: .3s;
+  animation-name: wave;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+.wave-0{ animation-delay: 0s;} 
+.wave-1{ animation-delay: 0.04543889467976307s;} 
+.wave-2{ animation-delay: 0.09078392350887036s;} 
+.wave-3{ animation-delay: 0.13594141454098485s;} 
+.wave-4{ animation-delay: 0.18081808323784737s;} 
+.wave-5{ animation-delay: 0.22532122517274333s;} 
+.wave-6{ animation-delay: 0.2693589075355986s;} 
+.wave-7{ animation-delay: 0.31284015904410034s;} 
+.wave-8{ animation-delay: 0.35567515786853215s;} 
+.wave-9{ animation-delay: 0.39777541718211645s;} 
+.wave-10{ animation-delay: 0.43905396795356066s;} 
+.wave-11{ animation-delay: 0.479425538604203s;} 
+.wave-12{ animation-delay: 0.5188067311586273s;} 
+.wave-13{ animation-delay: 0.5571161935248646s;} 
+.wave-14{ animation-delay: 0.5942747875482894s;} 
+.wave-15{ animation-delay: 0.6302057524920538s;} 
+.wave-16{ animation-delay: 0.6648348636063459s;} 
+.wave-17{ animation-delay: 0.6980905854589087s;} 
+.wave-18{ animation-delay: 0.7299042197100738s;} 
+.wave-19{ animation-delay: 0.7602100470270432s;} 
+.wave-20{ animation-delay: 0.7889454628442574s;} 
+.wave-21{ animation-delay: 0.816051106689402s;} 
+.wave-22{ animation-delay: 0.8414709848078965s;}
+@keyframes wave {
+    from { transform : translateY(0);}
+    to   { transform : translateY( -40px ); }
+  }
