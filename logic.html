@@ -1,0 +1,192 @@
+<html>
+<head>
+    <title>a logic puzzle for GAMERS</title>
+    <script src="confetti.min.js"></script>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 2rem;
+        }
+        .header div {
+            writing-mode: vertical-lr;
+            border: 1px dashed black;
+            padding: 6px;
+            transform: rotate(-180deg);
+        }
+        .header {
+            display:inline-grid; 
+            grid-template-columns: auto auto auto auto; 
+            border-bottom: 1px solid black;
+            border-right: 1px solid black;
+        }
+
+        .leader {
+            display:inline-grid; 
+            grid-template-rows: auto auto auto auto; 
+            border-bottom: 1px solid black;
+            border-right: 1px solid black; 
+            text-align: right;  
+        }
+
+        .leader div {
+            border: 1px dashed black;
+            padding: 6px;
+
+        }
+        .placeholder {
+            border-right: 1px solid black;
+            border-bottom: 1px solid black;
+            display: inline-grid; 
+            grid-template-columns: 37.25px 37.25px 37.25px 37.25px; 
+            grid-template-rows: 37.25px 37.25px 37.25px 37.25px;
+        }
+        .placeholder div {
+            border: 1px dashed black;
+            font-size: 24px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .grid {
+            margin-left: 200px; 
+            margin-top: 50px;
+            display: grid; 
+            grid-template-columns: 250px 150px 150px; 
+            grid-template-rows: 150px 150px 150px;
+        }
+
+        .clues {
+            font-family: monospace;
+            font-size: 1.3rem;
+        }
+
+        .emptyone {
+            align-self: center;
+            justify-self: center;
+        }
+
+        .guess {
+            text-align: center;
+        }
+        label {
+            margin-right: 1rem;
+        }
+
+        h1 {
+            position: absolute;
+            background-color: black;
+            color: white;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            font-size: 7rem;
+            text-align: center;
+            padding-top:30%;
+
+        }
+
+    </style>
+</head>
+<body>
+    <section class="explanation">
+        <p>Four studios recently announced their upcoming games! Each game is a different genre, and being released on a different platform. Below are some clippings from news articles about their announcements.</p>
+    </section>
+    <section class="clues">
+        <ol>
+            <li><blockquote>"We really got burned when Catalina came out, it broke all our previous games. So for our platformer we decided to go a different, uh, platform," the lead developer explained.</blockquote></li>
+            <li><blockquote>"We joke, but honestly, Shadersoft makes almost all its decisions based on alliteration potential," said a source that wished to remain anonymous. "I can't believe we're still in business."</blockquote></li>
+            <li><blockquote>Pew Motherf*ucker Studios has come under fire with its latest announcement. Some fans are angry about the change of genre, and some are angry about the exclusivity deal. "It's a totaly betrayal! They don't even care about the gamers anymore, they're just in it for the money," said reddit user donkeyBallz420.</blockquote></li>
+            <li><blockquote>Unreal Engine is not a common choice for developing roguelikes, so the store is offering developers hefty cash incentives for making the switch.</blockquote></li>
+            <li><blockquote>Helmet's upcoming game has the player controlling a party of ants, completing a series of quests and battling bigger critters to bring food back to the colony. It's a strange theme, to be sure, but haven't you always wanted to lift 50 times your own body mass?</blockquote></li>
+            <li><blockquote>Bullet William's Cowboy Carnival is plenty fun, but shaking the joy-cons to reload feels pretty silly when your weapon is a midway booth's water pistol.</blockquote></li>
+        </ol>
+    </section>
+    <section class="guess">
+        <label>What platform is Haypixel releasing on?</label><input id="guess" type="text"></input><button type="submit" id="btn">submit</button>
+    </section>
+
+    <div class="grid">
+        <div class="emptyone">
+            (click for ✖, right click for ☑)
+        </div>
+        
+        <div class="header">
+            <div>Switch</div>
+            <div>Apple Store</div>
+            <div>Epic</div>
+            <div>Steam</div>
+        </div>
+        <div class="header">
+            <div>shooter</div>
+            <div>RPG</div>
+            <div>platformer</div>
+            <div>roguelike</div>
+        </div>
+        <div class="leader">
+            <div>Haypixel Games</div>
+            <div>Pew Pew Motherf*cker Studios</div>
+            <div>Shadersoft Productions</div>
+            <div>Infamous Helment Interactive</div>
+        </div>
+        <div class="placeholder">
+            <div></div><div></div><div></div><div></div>
+            <div></div><div></div><div></div><div></div>
+            <div></div><div></div><div></div><div></div>
+            <div></div><div></div><div></div><div></div>
+        </div>
+        <div class="placeholder">
+            <div></div><div></div><div></div><div></div>
+            <div></div><div></div><div></div><div></div>
+            <div></div><div></div><div></div><div></div>
+            <div></div><div></div><div></div><div></div>
+        </div>
+
+        <div class="leader">
+            <div>shooter</div>
+            <div>RPG</div>
+            <div>platformer</div>
+            <div>roguelike</div>
+        </div>
+        <div class="placeholder">
+            <div></div><div></div><div></div><div></div>
+            <div></div><div></div><div></div><div></div>
+            <div></div><div></div><div></div><div></div>
+            <div></div><div></div><div></div><div></div>
+        </div>
+    </div>
+
+   
+</body>
+<script>
+    document.querySelectorAll(".placeholder div").forEach(el => el.addEventListener("click", e => {
+        if (!e.target.childNodes.length) {
+            let ex = document.createElement("span");
+            ex.textContent = "✖";
+            ex.style.color = "767676";
+            e.target.appendChild(ex); 
+        } else 
+            e.target.removeChild(e.target.childNodes[0]);
+    }));
+    document.querySelectorAll(".placeholder div").forEach(el => el.addEventListener("contextmenu", e => {
+        e.preventDefault();
+        if (!e.target.childNodes.length) {
+            let check = document.createElement("span");
+            check.textContent = "☑";
+            check.style.color = "#119900";
+            e.target.appendChild(check); 
+        } else 
+            e.target.removeChild(e.target.childNodes[0]);
+    }));
+
+    //OI! CHEATER! GET OUTTA HERE!!
+    document.getElementById("btn").addEventListener("click", e => {
+        if (document.getElementById("guess").value.match(/steam/i)) {
+            confetti.start();
+            const h1 = document.createElement("h1");
+            h1.appendChild(document.createTextNode("YOU DID IT!"))
+            document.body.appendChild(h1);  
+        } 
+    });
+</script>
+</html>
